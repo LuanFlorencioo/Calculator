@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+
+/* Theme 1 */
+$tm1-main-bg: #3a4764;
+$tm1-toggle-bg: #232c43;
+$tm1-screen-bg: #182034;
+
+$tm1-key-white-bg: #eae3dc;
+$tm1-key-white-shadow: #b4a597;
+$tm1-key-gray-bg: #637097;
+$tm1-key-gray-shadow: #404e72;
+$tm1-key-red-bg: #d03f2f;
+$tm1-key-red-shadow: #93261a;
+
+$tm1-text-color: #444b5a;
+$tm1-text-color-white: #fff;
+
+html {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Spartan", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: $tm1-main-bg;
+}
