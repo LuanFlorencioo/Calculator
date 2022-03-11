@@ -4,6 +4,7 @@ html {
   font-size: 20px;
   font-weight: 700;
   font-family: "Spartan", sans-serif;
+  color: #fff;
 }
 
 * {
@@ -11,10 +12,114 @@ html {
   padding: 0;
 }
 
+h1 {
+  font-size: 1rem;
+}
+
+p {
+  font-size: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
 body {
   margin: 0;
   width: 100vw;
   height: 100vh;
   background: #3a4764;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.calc {
+  width: 500px;
+  height: 100%;
+}
+
+.calc .calc-header {
+  width: 100%;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.calc .calc-header .theme {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.calc .calc-header .theme .theme-toggle {
+  width: 60px;
+  margin-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.calc .calc-header .theme .theme-toggle .theme-id {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.calc .calc-header .theme .theme-toggle .toggle {
+  width: 100%;
+  height: 20px;
+  background: #182034;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.calc .calc-header .theme .theme-toggle .toggle .red-circle {
+  width: 15px;
+  height: 15px;
+  background: #d03f2f;
+  border-radius: 10px;
+  margin: 0 2.5px;
 }
 /*# sourceMappingURL=main.css.map */

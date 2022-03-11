@@ -19,6 +19,7 @@ html {
     font-size: 20px;
     font-weight: 700;
     font-family: "Spartan", sans-serif;
+    color: $tm1-text-color-white;
 }
 
 * {
@@ -26,9 +27,74 @@ html {
     padding: 0;
 }
 
+h1 {
+    font-size: 1rem;
+}
+
+p {
+    font-size: 0.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
 body {
     margin: 0;
     width: 100vw;
     height: 100vh;
     background: $tm1-main-bg;
+    display: flex;
+    justify-content: center;
+}
+
+.calc {
+    width: 500px;
+    height: 100%;
+
+    .calc-header {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .theme {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+
+            .theme-toggle {
+                width: 60px;
+                margin-left: 20px;
+                display: flex;
+                flex-direction: column;
+
+                .theme-id {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+                }
+
+                .toggle {
+                    width: 100%;
+                    height: 20px;
+                    background: $tm1-screen-bg;
+                    border-radius: 20px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: center;
+                    .red-circle {
+                        width: 15px;
+                        height: 15px;
+                        background: $tm1-key-red-bg;
+                        border-radius: 10px;
+                        margin: 0 2.5px;
+                    }
+                }
+            }
+        }
+    }
 }
