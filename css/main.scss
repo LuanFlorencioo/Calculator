@@ -25,6 +25,7 @@ html {
 * {
     margin: 0;
     padding: 0;
+    font-family: "Spartan", sans-serif;
 }
 
 h1 {
@@ -36,7 +37,7 @@ p {
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 body {
@@ -51,10 +52,12 @@ body {
 .calc {
     width: 500px;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     .calc-header {
         width: 100%;
-        height: 100px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -95,6 +98,75 @@ body {
                     }
                 }
             }
+        }
+        margin-bottom: 25px;
+    }
+
+    .calc-screen {
+        width: 100%;
+        height: 100px;
+        background: $tm1-screen-bg;
+        border-radius: 10px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .screen-result {
+            margin-right: 25px;
+        }
+        margin-bottom: 25px;
+    }
+
+    .calc-buttons {
+        width: 100%;
+        height: 400px;
+        background: $tm1-screen-bg;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .container-buttons {
+            width: 87.5%;
+            height: 85%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        button {
+            background: $tm1-key-white-bg;
+            border: none;
+            border-radius: 10px;
+            box-shadow: inset 0 -5px $tm1-key-white-shadow;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: $tm1-screen-bg;
+        }
+
+        .delete {
+            grid-row: 1/2;
+            grid-column: 4/5;
+            background: $tm1-key-gray-bg;
+            color: $tm1-text-color-white;
+            box-shadow: inset 0 -5px $tm1-key-gray-shadow;
+            font-size: 0.65rem;
+        }
+
+        .reset {
+            grid-column: 1/3;
+            background: $tm1-key-gray-bg;
+            color: $tm1-text-color-white;
+            box-shadow: inset 0 -5px $tm1-key-gray-shadow;
+            font-size: 0.65rem;
+        }
+
+        .equal {
+            grid-column: 3/5;
+            background: $tm1-key-red-bg;
+            color: $tm1-text-color-white;
+            box-shadow: inset 0 -5px $tm1-key-red-shadow;
+            font-size: 0.65rem;
         }
     }
 }

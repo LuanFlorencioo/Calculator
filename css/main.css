@@ -10,6 +10,7 @@ html {
 * {
   margin: 0;
   padding: 0;
+  font-family: "Spartan", sans-serif;
 }
 
 h1 {
@@ -21,7 +22,7 @@ p {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 body {
@@ -40,11 +41,20 @@ body {
 .calc {
   width: 500px;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .calc .calc-header {
   width: 100%;
-  height: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -58,6 +68,7 @@ body {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  margin-bottom: 25px;
 }
 
 .calc .calc-header .theme {
@@ -121,5 +132,101 @@ body {
   background: #d03f2f;
   border-radius: 10px;
   margin: 0 2.5px;
+}
+
+.calc .calc-screen {
+  width: 100%;
+  height: 100px;
+  background: #182034;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 25px;
+}
+
+.calc .calc-screen .screen-result {
+  margin-right: 25px;
+}
+
+.calc .calc-buttons {
+  width: 100%;
+  height: 400px;
+  background: #182034;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.calc .calc-buttons .container-buttons {
+  width: 87.5%;
+  height: 85%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[5];
+      grid-template-rows: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.calc .calc-buttons button {
+  background: #eae3dc;
+  border: none;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 -5px #b4a597;
+          box-shadow: inset 0 -5px #b4a597;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #182034;
+}
+
+.calc .calc-buttons .delete {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
+  background: #637097;
+  color: #fff;
+  -webkit-box-shadow: inset 0 -5px #404e72;
+          box-shadow: inset 0 -5px #404e72;
+  font-size: 0.65rem;
+}
+
+.calc .calc-buttons .reset {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  background: #637097;
+  color: #fff;
+  -webkit-box-shadow: inset 0 -5px #404e72;
+          box-shadow: inset 0 -5px #404e72;
+  font-size: 0.65rem;
+}
+
+.calc .calc-buttons .equal {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 2;
+  grid-column: 3/5;
+  background: #d03f2f;
+  color: #fff;
+  -webkit-box-shadow: inset 0 -5px #93261a;
+          box-shadow: inset 0 -5px #93261a;
+  font-size: 0.65rem;
 }
 /*# sourceMappingURL=main.css.map */
