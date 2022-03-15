@@ -153,6 +153,8 @@ body {
 
 .calc .calc-screen .screen-result {
   margin-right: 25px;
+  -webkit-animation: animationScreen 0.8s forwards;
+          animation: animationScreen 0.8s forwards;
 }
 
 .calc .calc-buttons {
@@ -192,6 +194,22 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
   color: #182034;
+  cursor: pointer;
+}
+
+.calc .calc-buttons button.number:active,
+.calc .calc-buttons button.token:active,
+.calc .calc-buttons button.comma:active {
+  background: #b4a597;
+}
+
+.calc .calc-buttons button.delete:active,
+.calc .calc-buttons button.reset:active {
+  background: #404e72;
+}
+
+.calc .calc-buttons button.equal:active {
+  background: #93261a;
 }
 
 .calc .calc-buttons .delete {

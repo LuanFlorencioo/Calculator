@@ -110,10 +110,11 @@ body {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        margin-bottom: 25px;
         .screen-result {
             margin-right: 25px;
+            animation: animationScreen 0.8s forwards;
         }
-        margin-bottom: 25px;
     }
 
     .calc-buttons {
@@ -142,6 +143,20 @@ body {
             font-size: 1.2rem;
             font-weight: bold;
             color: $tm1-screen-bg;
+            cursor: pointer;
+        }
+
+        button.number:active,
+        button.token:active,
+        button.comma:active {
+            background: $tm1-key-white-shadow;
+        }
+        button.delete:active,
+        button.reset:active {
+            background: $tm1-key-gray-shadow;
+        }
+        button.equal:active {
+            background: $tm1-key-red-shadow;
         }
 
         .delete {
