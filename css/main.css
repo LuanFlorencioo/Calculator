@@ -38,7 +38,7 @@ body {
           justify-content: center;
 }
 
-.calc {
+body .calc {
   width: 500px;
   height: 100%;
   display: -webkit-box;
@@ -53,7 +53,7 @@ body {
           justify-content: center;
 }
 
-.calc .calc-header {
+body .calc .calc-header {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -71,7 +71,7 @@ body {
   margin-bottom: 25px;
 }
 
-.calc .calc-header .theme {
+body .calc .calc-header .theme {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,7 +84,7 @@ body {
           align-items: flex-end;
 }
 
-.calc .calc-header .theme .theme-toggle {
+body .calc .calc-header .theme .theme-toggle {
   width: 60px;
   margin-left: 20px;
   display: -webkit-box;
@@ -96,7 +96,7 @@ body {
           flex-direction: column;
 }
 
-.calc .calc-header .theme .theme-toggle .theme-id {
+body .calc .calc-header .theme .theme-toggle .theme-id {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -106,7 +106,7 @@ body {
           justify-content: space-evenly;
 }
 
-.calc .calc-header .theme .theme-toggle .toggle {
+body .calc .calc-header .theme .theme-toggle .toggle {
   width: 100%;
   height: 20px;
   background: #182034;
@@ -126,7 +126,7 @@ body {
           align-items: center;
 }
 
-.calc .calc-header .theme .theme-toggle .toggle .red-circle {
+body .calc .calc-header .theme .theme-toggle .toggle .red-circle {
   width: 15px;
   height: 15px;
   background: #d03f2f;
@@ -134,7 +134,7 @@ body {
   margin: 0 2.5px;
 }
 
-.calc .calc-screen {
+body .calc .calc-screen {
   width: 100%;
   height: 100px;
   background: #182034;
@@ -142,22 +142,36 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 25px;
+  overflow-x: auto;
 }
 
-.calc .calc-screen .screen-result {
-  margin-right: 25px;
-  -webkit-animation: animationScreen 0.8s forwards;
-          animation: animationScreen 0.8s forwards;
+body .calc .calc-screen .screen-result {
+  width: 90%;
+  height: 50px;
+  text-align: end;
 }
 
-.calc .calc-buttons {
+body .calc .calc-screen::-webkit-scrollbar {
+  height: 15px;
+}
+
+body .calc .calc-screen::-webkit-scrollbar-button {
+  background: transparent;
+}
+
+body .calc .calc-screen::-webkit-scrollbar-thumb {
+  background: #232c43;
+  border-radius: 10px;
+}
+
+body .calc .calc-buttons {
   width: 100%;
   height: 400px;
   background: #182034;
@@ -173,7 +187,7 @@ body {
           align-items: center;
 }
 
-.calc .calc-buttons .container-buttons {
+body .calc .calc-buttons .container-buttons {
   width: 87.5%;
   height: 85%;
   display: -ms-grid;
@@ -185,7 +199,7 @@ body {
   gap: 20px;
 }
 
-.calc .calc-buttons button {
+body .calc .calc-buttons button {
   background: #eae3dc;
   border: none;
   border-radius: 10px;
@@ -197,22 +211,22 @@ body {
   cursor: pointer;
 }
 
-.calc .calc-buttons button.number:active,
-.calc .calc-buttons button.token:active,
-.calc .calc-buttons button.comma:active {
+body .calc .calc-buttons button.number:active,
+body .calc .calc-buttons button.token:active,
+body .calc .calc-buttons button.comma:active {
   background: #b4a597;
 }
 
-.calc .calc-buttons button.delete:active,
-.calc .calc-buttons button.reset:active {
+body .calc .calc-buttons button.delete:active,
+body .calc .calc-buttons button.reset:active {
   background: #404e72;
 }
 
-.calc .calc-buttons button.equal:active {
+body .calc .calc-buttons button.equal:active {
   background: #93261a;
 }
 
-.calc .calc-buttons .delete {
+body .calc .calc-buttons .delete {
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   grid-row: 1/2;
@@ -226,7 +240,7 @@ body {
   font-size: 0.65rem;
 }
 
-.calc .calc-buttons .reset {
+body .calc .calc-buttons .reset {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1/3;
@@ -237,7 +251,7 @@ body {
   font-size: 0.65rem;
 }
 
-.calc .calc-buttons .equal {
+body .calc .calc-buttons .equal {
   -ms-grid-column: 3;
   -ms-grid-column-span: 2;
   grid-column: 3/5;
@@ -246,5 +260,116 @@ body {
   -webkit-box-shadow: inset 0 -5px #93261a;
           box-shadow: inset 0 -5px #93261a;
   font-size: 0.65rem;
+}
+
+body .calc .modal {
+  width: 300px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #eae3dc;
+  -webkit-box-shadow: inset 0 -5px #b4a597, 0 0px 30px 20px #182034;
+          box-shadow: inset 0 -5px #b4a597, 0 0px 30px 20px #182034;
+  position: fixed;
+  -webkit-animation: modalIn 0.3s forwards;
+          animation: modalIn 0.3s forwards;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .calc .modal img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: -8px;
+  top: -8px;
+}
+
+body .calc .modal p {
+  width: 80%;
+  height: 90%;
+  text-align: justify;
+  text-indent: 15px;
+  color: #182034;
+  font-size: 14px;
+}
+
+body .calc .modal.out {
+  -webkit-animation: modalOut 0.3s forwards;
+          animation: modalOut 0.3s forwards;
+}
+
+@-webkit-keyframes modalIn {
+  from {
+    top: -50px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    opacity: 0;
+  }
+  to {
+    top: 50px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    top: -50px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    opacity: 0;
+  }
+  to {
+    top: 50px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes modalOut {
+  from {
+    top: 50px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    opacity: 1;
+  }
+  to {
+    top: -50px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    opacity: 0;
+  }
+}
+
+@keyframes modalOut {
+  from {
+    top: 50px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    opacity: 1;
+  }
+  to {
+    top: -50px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    opacity: 0;
+  }
 }
 /*# sourceMappingURL=main.css.map */

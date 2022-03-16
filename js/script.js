@@ -1,8 +1,34 @@
 const calc = {
     equation: '',
     addValue(value) {
-        this.equation += value
+        this.equation += value;
+
+        this.changeResultScreen();
+        document.querySelector('.calc-screen').scroll(300, 0)
         return console.log(this.equation)
+    },
+    changeResultScreen() {
+        const screen = document.querySelector('.screen-result');
+        screen.innerText = this.equation;
+    },
+    valueVerification(value) {
+        const key = value;
+        const lastValue = calc.getLastValue();
+
+        if (lastValue) {
+            if (isNaN(+lastValue) && isNaN(+key))
+                calc.errorMessage("Ops! Não pode haver dois operadores juntos. Verifique os valores novamente.");
+
+            else
+                calc.addValue(key);
+        }
+        else {
+            if (key == '-' || !isNaN(+key))
+                calc.addValue(key);
+
+            else
+                calc.errorMessage('Para começar, você deve iniciar inserindo um número ou o valor de menos(-).');
+        }
     },
     getLastValue() {
         const lastValue = this.equation.at(-1);
@@ -10,84 +36,103 @@ const calc = {
     },
     removeLastValue() {
         this.equation = this.equation.slice(0, -1)
-        this.modifyScreen();
+        this.changeResultScreen();
         return console.log(this.equation)
     },
-    cleanEquation() {
+    resetEquation() {
         this.equation = '';
-        this.modifyScreen();
+        this.changeResultScreen();
         return console.log(this.equation)
+    },
+    errorMessage(errorAlert) {
+        if (!(document.querySelector('main.calc').contains(document.querySelector('.modal')))) {
+            const modalElement = document.createElement('div');
+            modalElement.classList.add('modal');
+            const imageElement = document.createElement('img');
+            imageElement.setAttribute('src', '../images/circle-exclamation-solid.svg')
+            modalElement.appendChild(imageElement)
+            const phraseElement = document.createElement('p');
+            phraseElement.innerText = errorAlert;
+            modalElement.appendChild(phraseElement)
+            document.querySelector('main.calc').appendChild(modalElement)
+
+            setTimeout(() => {
+                document.querySelector('main.calc div.modal').classList.add('out')
+            }, 4000)
+
+            setTimeout(() => {
+                document.querySelector('main.calc').removeChild(modalElement)
+            }, 5000)
+        }
+
     },
     calculateEquation() {
         try {
-            const result = eval(this.equation);
-            if (isNaN(result) || !isFinite(result))
+            if (this.equation == '0/0')
+                calc.errorMessage('Zero dividido por zero??? HaHaHa você só pode está brincando comigo.')
+            const resultEquation = eval(this.equation);
+            if (isNaN(resultEquation) || !isFinite(resultEquation))
                 this.equation = '0'
             else
-                this.equation = `${result}`
+                this.equation = `${resultEquation}`
 
-            this.modifyScreen();
+            this.changeResultScreen();
+            document.querySelector('.calc-screen').scroll(0, 0)
             return console.log(this.equation)
         }
         catch {
-            alert('Ops! Parece que a sua operação está incorreta. Verifique novamente. Talvez seja um operador ou algum número fora de lugar.')
-        }
-    },
-    modifyScreen() {
-        const screen = document.querySelector('.screen-result');
-        screen.innerText = this.equation;
-    }
-};
-
-{
-
-    const insertValueClick = ({ target }) => {
-        const key = target.classList[2];
-        const lastValue = calc.getLastValue();
-
-        if (lastValue) {
-            if (isNaN(+lastValue) && isNaN(+key)) {
-                console.error("Erro202: Já foi inserido outro operador matemático");
-            }
-            else {
-                calc.addValue(key);
-                calc.modifyScreen();
-
-            }
-        }
-        else {
-            if (key == '-' || !isNaN(+key)) {
-                calc.addValue(key)
-                calc.modifyScreen();
-
-            }
-            else {
-                console.error('Erro101: Primeiro você deve inserir um número')
-            }
+            calc.errorMessage('Ops! Parece que a sua operação está incorreta. Verifique novamente. Talvez seja um operador ou algum número fora de lugar.')
+            console.warn(errorAlert);
         }
     }
-
-    const getAllKeys = Array.from(document.querySelectorAll('button'));
-    getAllKeys.forEach(keyButton => {
-        switch (keyButton.classList[0]) {
-            case 'value':
-                keyButton.addEventListener('click', insertValueClick);
-                break;
-
-            case 'delete':
-                keyButton.addEventListener('click', () => calc.removeLastValue());
-                break;
-
-            case 'reset':
-                keyButton.addEventListener('click', () => calc.cleanEquation());
-                break;
-
-            case 'equal':
-                keyButton.addEventListener('click', () => calc.calculateEquation());
-                break;
-
-            default:
-                break;
-        }
-    })
 }
+
+const insertValueClick = (e) => {
+    if (e.type == 'keyup') {
+        const key = e.key;
+        if (!isNaN(+key) || key == '/' || key == '*' || key == '-' || key == '+' || key == '.')
+            calc.valueVerification(key)
+        else if (key == 'Backspace')
+            calc.removeLastValue();
+        else if (key == 'Enter')
+            calc.calculateEquation();
+    }
+    else {
+        const key = e.target.classList[2];
+        calc.valueVerification(key)
+    }
+}
+
+window.addEventListener('keyup', (e) => insertValueClick(e));
+
+const getAllKeys = Array.from(document.querySelectorAll('button'));
+getAllKeys.forEach(keyButton => {
+    switch (keyButton.classList[0]) {
+        case 'value':
+            keyButton.addEventListener('click', (e) => insertValueClick(e));
+            break;
+
+        case 'delete':
+            keyButton.addEventListener('click', () => calc.removeLastValue());
+            break;
+
+        case 'reset':
+            keyButton.addEventListener('click', () => calc.resetEquation());
+            break;
+
+        case 'equal':
+            keyButton.addEventListener('click', () => calc.calculateEquation());
+            break;
+
+        default:
+            break;
+    };
+});
+
+document.querySelector('.theme-toggle').addEventListener('click', () => {
+    const themes = document.body.classList;
+    if (themes[1] == '3')
+        themes.replace(themes[1], `1`)
+    else
+        themes.replace(themes[1], `${(+themes[1]) + 1}`)
+})

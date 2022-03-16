@@ -47,141 +47,217 @@ body {
     background: $tm1-main-bg;
     display: flex;
     justify-content: center;
-}
-
-.calc {
-    width: 500px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    .calc-header {
-        width: 100%;
+    .calc {
+        width: 500px;
+        height: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
+        flex-direction: column;
+        justify-content: center;
 
-        .theme {
+        .calc-header {
+            width: 100%;
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
             align-items: flex-end;
 
-            .theme-toggle {
-                width: 60px;
-                margin-left: 20px;
+            .theme {
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
+                align-items: flex-end;
 
-                .theme-id {
-                    width: 100%;
+                .theme-toggle {
+                    width: 60px;
+                    margin-left: 20px;
                     display: flex;
-                    justify-content: space-evenly;
-                }
+                    flex-direction: column;
 
-                .toggle {
-                    width: 100%;
-                    height: 20px;
-                    background: $tm1-screen-bg;
-                    border-radius: 20px;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: flex-start;
-                    align-items: center;
-                    .red-circle {
-                        width: 15px;
-                        height: 15px;
-                        background: $tm1-key-red-bg;
-                        border-radius: 10px;
-                        margin: 0 2.5px;
+                    .theme-id {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-evenly;
+                    }
+
+                    .toggle {
+                        width: 100%;
+                        height: 20px;
+                        background: $tm1-screen-bg;
+                        border-radius: 20px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        align-items: center;
+                        .red-circle {
+                            width: 15px;
+                            height: 15px;
+                            background: $tm1-key-red-bg;
+                            border-radius: 10px;
+                            margin: 0 2.5px;
+                        }
                     }
                 }
             }
-        }
-        margin-bottom: 25px;
-    }
-
-    .calc-screen {
-        width: 100%;
-        height: 100px;
-        background: $tm1-screen-bg;
-        border-radius: 10px;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        margin-bottom: 25px;
-        .screen-result {
-            margin-right: 25px;
-            animation: animationScreen 0.8s forwards;
-        }
-    }
-
-    .calc-buttons {
-        width: 100%;
-        height: 400px;
-        background: $tm1-screen-bg;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .container-buttons {
-            width: 87.5%;
-            height: 85%;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(5, 1fr);
-            gap: 20px;
+            margin-bottom: 25px;
         }
 
-        button {
-            background: $tm1-key-white-bg;
-            border: none;
+        .calc-screen {
+            width: 100%;
+            height: 100px;
+            background: $tm1-screen-bg;
             border-radius: 10px;
-            box-shadow: inset 0 -5px $tm1-key-white-shadow;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: $tm1-screen-bg;
-            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            overflow-x: auto;
+
+            .screen-result {
+                width: 90%;
+                height: 50px;
+                text-align: end;
+            }
         }
 
-        button.number:active,
-        button.token:active,
-        button.comma:active {
-            background: $tm1-key-white-shadow;
-        }
-        button.delete:active,
-        button.reset:active {
-            background: $tm1-key-gray-shadow;
-        }
-        button.equal:active {
-            background: $tm1-key-red-shadow;
+        .calc-screen::-webkit-scrollbar {
+            height: 15px;
         }
 
-        .delete {
-            grid-row: 1/2;
-            grid-column: 4/5;
-            background: $tm1-key-gray-bg;
-            color: $tm1-text-color-white;
-            box-shadow: inset 0 -5px $tm1-key-gray-shadow;
-            font-size: 0.65rem;
+        .calc-screen::-webkit-scrollbar-button {
+            background: transparent;
         }
 
-        .reset {
-            grid-column: 1/3;
-            background: $tm1-key-gray-bg;
-            color: $tm1-text-color-white;
-            box-shadow: inset 0 -5px $tm1-key-gray-shadow;
-            font-size: 0.65rem;
+        .calc-screen::-webkit-scrollbar-thumb {
+            background: $tm1-toggle-bg;
+            border-radius: 10px;
         }
 
-        .equal {
-            grid-column: 3/5;
-            background: $tm1-key-red-bg;
-            color: $tm1-text-color-white;
-            box-shadow: inset 0 -5px $tm1-key-red-shadow;
-            font-size: 0.65rem;
+        .calc-buttons {
+            width: 100%;
+            height: 400px;
+            background: $tm1-screen-bg;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .container-buttons {
+                width: 87.5%;
+                height: 85%;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(5, 1fr);
+                gap: 20px;
+            }
+
+            button {
+                background: $tm1-key-white-bg;
+                border: none;
+                border-radius: 10px;
+                box-shadow: inset 0 -5px $tm1-key-white-shadow;
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: $tm1-screen-bg;
+                cursor: pointer;
+            }
+
+            button.number:active,
+            button.token:active,
+            button.comma:active {
+                background: $tm1-key-white-shadow;
+            }
+            button.delete:active,
+            button.reset:active {
+                background: $tm1-key-gray-shadow;
+            }
+            button.equal:active {
+                background: $tm1-key-red-shadow;
+            }
+
+            .delete {
+                grid-row: 1/2;
+                grid-column: 4/5;
+                background: $tm1-key-gray-bg;
+                color: $tm1-text-color-white;
+                box-shadow: inset 0 -5px $tm1-key-gray-shadow;
+                font-size: 0.65rem;
+            }
+
+            .reset {
+                grid-column: 1/3;
+                background: $tm1-key-gray-bg;
+                color: $tm1-text-color-white;
+                box-shadow: inset 0 -5px $tm1-key-gray-shadow;
+                font-size: 0.65rem;
+            }
+
+            .equal {
+                grid-column: 3/5;
+                background: $tm1-key-red-bg;
+                color: $tm1-text-color-white;
+                box-shadow: inset 0 -5px $tm1-key-red-shadow;
+                font-size: 0.65rem;
+            }
+        }
+
+        .modal {
+            width: 300px;
+            height: 100px;
+            border-radius: 10px;
+            background-color: $tm1-key-white-bg;
+            box-shadow: inset 0 -5px $tm1-key-white-shadow, 0 0px 30px 20px $tm1-screen-bg;
+            position: fixed;
+            animation: modalIn 0.3s forwards;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                left: -8px;
+                top: -8px;
+            }
+            p {
+                width: 80%;
+                height: 90%;
+                text-align: justify;
+                text-indent: 15px;
+                color: #182034;
+                font-size: 14px;
+            }
+        }
+
+        .modal.out {
+            animation: modalOut 0.3s forwards;
+        }
+
+        @keyframes modalIn {
+            from {
+                top: -50px;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 0;
+            }
+            to {
+                top: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 1;
+            }
+        }
+        @keyframes modalOut {
+            from {
+                top: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 1;
+            }
+            to {
+                top: -50px;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 0;
+            }
         }
     }
 }
