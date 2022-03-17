@@ -1,20 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
 
-/* Theme 1 */
-$tm1-main-bg: #3a4764;
-$tm1-toggle-bg: #232c43;
-$tm1-screen-bg: #182034;
-
-$tm1-key-white-bg: #eae3dc;
-$tm1-key-white-shadow: #b4a597;
-$tm1-key-gray-bg: #637097;
-$tm1-key-gray-shadow: #404e72;
-$tm1-key-red-bg: #d03f2f;
-$tm1-key-red-shadow: #93261a;
-
-$tm1-text-color: #444b5a;
-$tm1-text-color-white: #fff;
-
 * {
     margin: 0;
     padding: 0;
@@ -43,8 +28,6 @@ body {
     margin: 0;
     width: 100vw;
     height: 100vh;
-    background: $tm1-main-bg;
-    color: $tm1-text-color-white;
     display: flex;
     justify-content: center;
     .calc {
@@ -81,7 +64,6 @@ body {
                     .toggle {
                         width: 100%;
                         height: 20px;
-                        background: $tm1-screen-bg;
                         border-radius: 20px;
                         display: flex;
                         flex-direction: row;
@@ -90,7 +72,6 @@ body {
                         .red-circle {
                             width: 15px;
                             height: 15px;
-                            background: $tm1-key-red-bg;
                             border-radius: 10px;
                             margin: 0 2.5px;
                         }
@@ -103,7 +84,6 @@ body {
         .calc-screen {
             width: 100%;
             height: 100px;
-            background: $tm1-screen-bg;
             border-radius: 10px;
             display: flex;
             justify-content: center;
@@ -127,14 +107,12 @@ body {
         }
 
         .calc-screen::-webkit-scrollbar-thumb {
-            background: $tm1-toggle-bg;
             border-radius: 10px;
         }
 
         .calc-buttons {
             width: 100%;
             height: 400px;
-            background: $tm1-screen-bg;
             border-radius: 10px;
             display: flex;
             justify-content: center;
@@ -150,64 +128,37 @@ body {
             }
 
             button {
-                background: $tm1-key-white-bg;
                 border: none;
                 border-radius: 10px;
-                box-shadow: inset 0 -5px $tm1-key-white-shadow;
                 font-size: 1.2rem;
                 font-weight: bold;
-                color: $tm1-screen-bg;
                 cursor: pointer;
-            }
-
-            button.number:active,
-            button.token:active,
-            button.comma:active {
-                background: $tm1-key-white-shadow;
-            }
-            button.delete:active,
-            button.reset:active {
-                background: $tm1-key-gray-shadow;
-            }
-            button.equal:active {
-                background: $tm1-key-red-shadow;
             }
 
             .delete {
                 grid-row: 1/2;
                 grid-column: 4/5;
-                background: $tm1-key-gray-bg;
-                color: $tm1-text-color-white;
-                box-shadow: inset 0 -5px $tm1-key-gray-shadow;
                 font-size: 0.65rem;
             }
 
             .reset {
                 grid-column: 1/3;
-                background: $tm1-key-gray-bg;
-                color: $tm1-text-color-white;
-                box-shadow: inset 0 -5px $tm1-key-gray-shadow;
                 font-size: 0.65rem;
             }
 
             .equal {
                 grid-column: 3/5;
-                background: $tm1-key-red-bg;
-                color: $tm1-text-color-white;
-                box-shadow: inset 0 -5px $tm1-key-red-shadow;
                 font-size: 0.65rem;
             }
         }
 
-        .modal {
+        .modalIn,
+        .modalOut {
             width: 300px;
             height: 100px;
             border-radius: 10px;
-            background: $tm1-key-white-bg;
-            box-shadow: inset 0 -5px $tm1-key-white-shadow, 0 0px 30px 10px $tm1-screen-bg;
             position: fixed;
-            animation: modalIn 0.3s forwards;
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: center;
             img {
@@ -221,12 +172,20 @@ body {
                 width: 80%;
                 text-align: justify;
                 text-indent: 15px;
-                color: $tm1-text-color;
                 font-size: 14px;
             }
         }
 
-        .modal.out {
+        .modalIn.active,
+        .modalOut.active {
+            display: flex;
+        }
+
+        .modalIn {
+            animation: modalIn 0.3s forwards;
+        }
+
+        .modalOut {
             animation: modalOut 0.3s forwards;
         }
 
@@ -256,6 +215,256 @@ body {
                 left: 50%;
                 transform: translateX(-50%);
                 opacity: 0;
+            }
+        }
+    }
+}
+
+/* Theme 1 */
+$tm1-main-bg: #3a4764;
+$tm1-toggle-bg: #232c43;
+$tm1-screen-bg: #182034;
+
+$tm1-key-white-bg: #eae3dc;
+$tm1-key-white-shadow: #b4a597;
+$tm1-key-gray-bg: #637097;
+$tm1-key-gray-shadow: #404e72;
+$tm1-key-red-bg: #d03f2f;
+$tm1-key-red-shadow: #93261a;
+
+$tm1-text-color: #444b5a;
+$tm1-text-color-white: #fff;
+
+body.theme-1 {
+    background: $tm1-main-bg;
+    color: $tm1-text-color-white;
+    .calc {
+        .calc-header {
+            .toggle {
+                background: $tm1-screen-bg;
+                .red-circle {
+                    background: $tm1-key-red-bg;
+                }
+            }
+        }
+
+        .calc-screen {
+            background: $tm1-screen-bg;
+        }
+
+        .calc-screen::-webkit-scrollbar-thumb {
+            background: $tm1-toggle-bg;
+        }
+
+        .calc-buttons {
+            background: $tm1-screen-bg;
+            button {
+                background: $tm1-key-white-bg;
+                box-shadow: inset 0 -5px $tm1-key-white-shadow;
+                color: $tm1-screen-bg;
+            }
+            button.number:active,
+            button.token:active,
+            button.comma:active {
+                background: $tm1-key-white-shadow;
+            }
+            button.delete:active,
+            button.reset:active {
+                background: $tm1-key-gray-shadow;
+            }
+            button.equal:active {
+                background: $tm1-key-red-shadow;
+            }
+            .delete {
+                background: $tm1-key-gray-bg;
+                color: $tm1-text-color-white;
+                box-shadow: inset 0 -5px $tm1-key-gray-shadow;
+            }
+            .reset {
+                background: $tm1-key-gray-bg;
+                color: $tm1-text-color-white;
+                box-shadow: inset 0 -5px $tm1-key-gray-shadow;
+            }
+            .equal {
+                background: $tm1-key-red-bg;
+                color: $tm1-text-color-white;
+                box-shadow: inset 0 -5px $tm1-key-red-shadow;
+            }
+        }
+
+        .modalIn,
+        .modalOut {
+            background: $tm1-key-white-bg;
+            box-shadow: inset 0 -5px $tm1-key-white-shadow, 0 0px 30px 10px $tm1-screen-bg;
+            p {
+                color: $tm1-text-color;
+            }
+        }
+    }
+}
+
+/* Theme 2 */
+$tm2-main-bg: #e6e6e6;
+$tm2-toggle-bg: #d1cccc;
+$tm2-screen-bg: #ededed;
+
+$tm2-key-cyan-bg: #377f86;
+$tm2-key-cyan-shadow: #1b5f65;
+$tm2-key-orange-bg: #ca5502;
+$tm2-key-orange-shadow: #893901;
+$tm2-key-yellow-bg: #e5e4e1;
+$tm2-key-yellow-shadow: #a69d91;
+
+$tm2-text-color: #35352c;
+$tm2-text-color-white: #fff;
+
+body.theme-2 {
+    background: $tm2-main-bg;
+    color: $tm2-text-color;
+    .calc {
+        .calc-header {
+            .toggle {
+                background: $tm2-toggle-bg;
+                .red-circle {
+                    background: $tm2-key-orange-bg;
+                }
+            }
+        }
+
+        .calc-screen {
+            background: $tm2-screen-bg;
+        }
+
+        .calc-screen::-webkit-scrollbar-thumb {
+            background: $tm2-toggle-bg;
+        }
+
+        .calc-buttons {
+            background: $tm2-toggle-bg;
+            button {
+                background: $tm2-key-yellow-bg;
+                box-shadow: inset 0 -5px $tm2-key-yellow-shadow;
+                color: $tm2-text-color;
+            }
+            button.number:active,
+            button.token:active,
+            button.comma:active {
+                background: $tm2-key-yellow-shadow;
+            }
+            button.delete:active,
+            button.reset:active {
+                background: $tm2-key-cyan-shadow;
+            }
+            button.equal:active {
+                background: $tm2-key-orange-shadow;
+            }
+            .delete {
+                background: $tm2-key-cyan-bg;
+                color: $tm2-text-color-white;
+                box-shadow: inset 0 -5px $tm2-key-cyan-shadow;
+            }
+            .reset {
+                background: $tm2-key-cyan-bg;
+                color: $tm2-text-color-white;
+                box-shadow: inset 0 -5px $tm2-key-cyan-shadow;
+            }
+            .equal {
+                background: $tm2-key-orange-bg;
+                color: $tm2-text-color-white;
+                box-shadow: inset 0 -5px $tm2-key-orange-shadow;
+            }
+        }
+
+        .modalIn,
+        .modalOut {
+            background: $tm2-key-cyan-bg;
+            box-shadow: inset 0 -5px $tm2-key-cyan-shadow, 0 0px 30px 10px $tm2-key-orange-shadow;
+            p {
+                color: $tm2-text-color-white;
+            }
+        }
+    }
+}
+
+/* Theme 3 */
+$tm3-main-bg: hsl(268, 75%, 9%);
+$tm3-toggle-bg: hsl(268, 71%, 12%);
+$tm3-screen-bg: hsl(268, 71%, 12%);
+
+$tm3-key-violet-bg: hsl(281, 89%, 26%);
+$tm3-key-violet-shadow: hsl(285, 91%, 52%);
+$tm3-key-cyan-bg: hsl(176, 100%, 44%);
+$tm3-key-cyan-shadow: hsl(177, 92%, 70%);
+$tm3-key-purple-bg: hsl(268, 47%, 21%);
+$tm3-key-purple-shadow: hsl(290, 70%, 36%);
+
+$tm3-text-color: hsl(52, 100%, 62%);
+$tm3-text-color-purple: hsl(198, 20%, 13%);
+$tm3-text-color-white: hsl(0, 0, 100%);
+
+body.theme-3 {
+    background: $tm3-main-bg;
+    color: $tm3-text-color;
+    .calc {
+        .calc-header {
+            .toggle {
+                background: $tm3-toggle-bg;
+                .red-circle {
+                    background: $tm3-key-cyan-bg;
+                }
+            }
+        }
+
+        .calc-screen {
+            background: $tm3-screen-bg;
+        }
+
+        .calc-screen::-webkit-scrollbar-thumb {
+            background: $tm3-text-color-purple;
+        }
+
+        .calc-buttons {
+            background: $tm3-toggle-bg;
+            button {
+                background: $tm3-key-purple-bg;
+                box-shadow: inset 0 -5px $tm3-key-purple-shadow;
+                color: $tm3-text-color;
+            }
+            button.number:active,
+            button.token:active,
+            button.comma:active {
+                background: $tm3-key-purple-shadow;
+            }
+            button.delete:active,
+            button.reset:active {
+                background: $tm3-key-violet-shadow;
+            }
+            button.equal:active {
+                background: $tm3-key-cyan-shadow;
+            }
+            .delete {
+                background: $tm3-key-violet-bg;
+                color: $tm3-text-color-white;
+                box-shadow: inset 0 -5px $tm3-key-violet-shadow;
+            }
+            .reset {
+                background: $tm3-key-violet-bg;
+                color: $tm3-text-color-white;
+                box-shadow: inset 0 -5px $tm3-key-violet-shadow;
+            }
+            .equal {
+                background: $tm3-key-cyan-bg;
+                color: $tm3-text-color-purple;
+                box-shadow: inset 0 -5px $tm3-key-cyan-shadow;
+            }
+        }
+
+        .modalIn,
+        .modalOut {
+            background: $tm3-key-violet-bg;
+            box-shadow: inset 0 -5px $tm3-key-violet-shadow, 0 0px 30px 10px $tm3-key-cyan-bg;
+            p {
+                color: $tm3-text-color;
             }
         }
     }

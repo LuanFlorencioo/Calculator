@@ -45,26 +45,19 @@ const calc = {
         return console.log(this.equation)
     },
     errorMessage(errorAlert) {
-        if (!(document.querySelector('main.calc').contains(document.querySelector('.modal')))) {
-            const modalElement = document.createElement('div');
-            modalElement.classList.add('modal');
-            const imageElement = document.createElement('img');
-            imageElement.setAttribute('src', './../images/icon-circle.png')
-            modalElement.appendChild(imageElement)
-            const phraseElement = document.createElement('p');
-            phraseElement.innerText = errorAlert;
-            modalElement.appendChild(phraseElement)
-            document.querySelector('main.calc').appendChild(modalElement)
+        const modal = document.querySelector('.modalIn');
+        modal.querySelector('p').innerText = errorAlert;
 
+        if (!modal.classList.contains('active')) {
+            modal.classList.toggle('active');
             setTimeout(() => {
-                document.querySelector('main.calc div.modal').classList.add('out')
-            }, 4000)
-
+                modal.classList.replace('modalIn', 'modalOut')
+            }, 4000);
             setTimeout(() => {
-                document.querySelector('main.calc').removeChild(modalElement)
-            }, 5000)
+                modal.classList.toggle('active')
+                modal.classList.replace('modalOut', 'modalIn')
+            }, 5000);
         }
-
     },
     calculateEquation() {
         try {
@@ -130,10 +123,18 @@ getAllKeys.forEach(keyButton => {
 });
 
 const themeToggle = {
-    getCurrentTheme() {
+    getKeyCurrentTheme() {
         const currentTheme = document.body.className.split('-')[1];
-        return console.log(currentTheme)
+        return currentTheme
+    },
+    changeNextTheme() {
+        const nextTheme = +(this.getKeyCurrentTheme()) + 1;
+        if (nextTheme == '4') {
+            document.body.classList.replace(`theme-${this.getKeyCurrentTheme()}`, `theme-1`)
+        } else {
+            document.body.classList.replace(`theme-${this.getKeyCurrentTheme()}`, `theme-${nextTheme}`)
+        }
     }
 }
 
-document.querySelector('.toggle').addEventListener('click', () => themeToggle.getCurrentTheme())
+document.querySelector('.toggle').addEventListener('click', () => themeToggle.changeNextTheme())

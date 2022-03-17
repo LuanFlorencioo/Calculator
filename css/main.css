@@ -1,14 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
-/* Theme 1 */
-html {
-  font-size: 20px;
-  font-weight: 700;
-  font-family: "Spartan", sans-serif;
-}
-
 * {
   margin: 0;
   padding: 0;
+  font-family: "Spartan", sans-serif;
+}
+
+html {
+  font-size: 20px;
+  font-weight: 700;
   font-family: "Spartan", sans-serif;
 }
 
@@ -16,20 +15,18 @@ h1 {
   font-size: 1rem;
 }
 
-p {
-  font-size: 0.5rem;
-}
-
 h2 {
   font-size: 2rem;
+}
+
+p {
+  font-size: 0.5rem;
 }
 
 body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  background: #3a4764;
-  color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -109,7 +106,6 @@ body .calc .calc-header .theme .theme-toggle .theme-id {
 body .calc .calc-header .theme .theme-toggle .toggle {
   width: 100%;
   height: 20px;
-  background: #182034;
   border-radius: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -129,7 +125,6 @@ body .calc .calc-header .theme .theme-toggle .toggle {
 body .calc .calc-header .theme .theme-toggle .toggle .red-circle {
   width: 15px;
   height: 15px;
-  background: #d03f2f;
   border-radius: 10px;
   margin: 0 2.5px;
 }
@@ -137,7 +132,6 @@ body .calc .calc-header .theme .theme-toggle .toggle .red-circle {
 body .calc .calc-screen {
   width: 100%;
   height: 100px;
-  background: #182034;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -167,14 +161,12 @@ body .calc .calc-screen::-webkit-scrollbar-button {
 }
 
 body .calc .calc-screen::-webkit-scrollbar-thumb {
-  background: #232c43;
   border-radius: 10px;
 }
 
 body .calc .calc-buttons {
   width: 100%;
   height: 400px;
-  background: #182034;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -200,30 +192,11 @@ body .calc .calc-buttons .container-buttons {
 }
 
 body .calc .calc-buttons button {
-  background: #eae3dc;
   border: none;
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 -5px #b4a597;
-          box-shadow: inset 0 -5px #b4a597;
   font-size: 1.2rem;
   font-weight: bold;
-  color: #182034;
   cursor: pointer;
-}
-
-body .calc .calc-buttons button.number:active,
-body .calc .calc-buttons button.token:active,
-body .calc .calc-buttons button.comma:active {
-  background: #b4a597;
-}
-
-body .calc .calc-buttons button.delete:active,
-body .calc .calc-buttons button.reset:active {
-  background: #404e72;
-}
-
-body .calc .calc-buttons button.equal:active {
-  background: #93261a;
 }
 
 body .calc .calc-buttons .delete {
@@ -233,10 +206,6 @@ body .calc .calc-buttons .delete {
   -ms-grid-column: 4;
   -ms-grid-column-span: 1;
   grid-column: 4/5;
-  background: #637097;
-  color: #fff;
-  -webkit-box-shadow: inset 0 -5px #404e72;
-          box-shadow: inset 0 -5px #404e72;
   font-size: 0.65rem;
 }
 
@@ -244,10 +213,6 @@ body .calc .calc-buttons .reset {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1/3;
-  background: #637097;
-  color: #fff;
-  -webkit-box-shadow: inset 0 -5px #404e72;
-          box-shadow: inset 0 -5px #404e72;
   font-size: 0.65rem;
 }
 
@@ -255,26 +220,16 @@ body .calc .calc-buttons .equal {
   -ms-grid-column: 3;
   -ms-grid-column-span: 2;
   grid-column: 3/5;
-  background: #d03f2f;
-  color: #fff;
-  -webkit-box-shadow: inset 0 -5px #93261a;
-          box-shadow: inset 0 -5px #93261a;
   font-size: 0.65rem;
 }
 
-body .calc .modal {
+body .calc .modalIn,
+body .calc .modalOut {
   width: 300px;
   height: 100px;
   border-radius: 10px;
-  background: #eae3dc;
-  -webkit-box-shadow: inset 0 -5px #b4a597, 0 0px 30px 10px #182034;
-          box-shadow: inset 0 -5px #b4a597, 0 0px 30px 10px #182034;
   position: fixed;
-  -webkit-animation: modalIn 0.3s forwards;
-          animation: modalIn 0.3s forwards;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -283,7 +238,8 @@ body .calc .modal {
           align-items: center;
 }
 
-body .calc .modal img {
+body .calc .modalIn img,
+body .calc .modalOut img {
   width: 30px;
   height: 30px;
   position: absolute;
@@ -291,15 +247,27 @@ body .calc .modal img {
   top: -8px;
 }
 
-body .calc .modal p {
+body .calc .modalIn p,
+body .calc .modalOut p {
   width: 80%;
   text-align: justify;
   text-indent: 15px;
-  color: #444b5a;
   font-size: 14px;
 }
 
-body .calc .modal.out {
+body .calc .modalIn.active,
+body .calc .modalOut.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .calc .modalIn {
+  -webkit-animation: modalIn 0.3s forwards;
+          animation: modalIn 0.3s forwards;
+}
+
+body .calc .modalOut {
   -webkit-animation: modalOut 0.3s forwards;
           animation: modalOut 0.3s forwards;
 }
@@ -370,5 +338,248 @@ body .calc .modal.out {
             transform: translateX(-50%);
     opacity: 0;
   }
+}
+
+/* Theme 1 */
+body.theme-1 {
+  background: #3a4764;
+  color: #fff;
+}
+
+body.theme-1 .calc .calc-header .toggle {
+  background: #182034;
+}
+
+body.theme-1 .calc .calc-header .toggle .red-circle {
+  background: #d03f2f;
+}
+
+body.theme-1 .calc .calc-screen {
+  background: #182034;
+}
+
+body.theme-1 .calc .calc-screen::-webkit-scrollbar-thumb {
+  background: #232c43;
+}
+
+body.theme-1 .calc .calc-buttons {
+  background: #182034;
+}
+
+body.theme-1 .calc .calc-buttons button {
+  background: #eae3dc;
+  -webkit-box-shadow: inset 0 -5px #b4a597;
+          box-shadow: inset 0 -5px #b4a597;
+  color: #182034;
+}
+
+body.theme-1 .calc .calc-buttons button.number:active,
+body.theme-1 .calc .calc-buttons button.token:active,
+body.theme-1 .calc .calc-buttons button.comma:active {
+  background: #b4a597;
+}
+
+body.theme-1 .calc .calc-buttons button.delete:active,
+body.theme-1 .calc .calc-buttons button.reset:active {
+  background: #404e72;
+}
+
+body.theme-1 .calc .calc-buttons button.equal:active {
+  background: #93261a;
+}
+
+body.theme-1 .calc .calc-buttons .delete {
+  background: #637097;
+  color: #fff;
+  -webkit-box-shadow: inset 0 -5px #404e72;
+          box-shadow: inset 0 -5px #404e72;
+}
+
+body.theme-1 .calc .calc-buttons .reset {
+  background: #637097;
+  color: #fff;
+  -webkit-box-shadow: inset 0 -5px #404e72;
+          box-shadow: inset 0 -5px #404e72;
+}
+
+body.theme-1 .calc .calc-buttons .equal {
+  background: #d03f2f;
+  color: #fff;
+  -webkit-box-shadow: inset 0 -5px #93261a;
+          box-shadow: inset 0 -5px #93261a;
+}
+
+body.theme-1 .calc .modalIn,
+body.theme-1 .calc .modalOut {
+  background: #eae3dc;
+  -webkit-box-shadow: inset 0 -5px #b4a597, 0 0px 30px 10px #182034;
+          box-shadow: inset 0 -5px #b4a597, 0 0px 30px 10px #182034;
+}
+
+body.theme-1 .calc .modalIn p,
+body.theme-1 .calc .modalOut p {
+  color: #444b5a;
+}
+
+/* Theme 2 */
+body.theme-2 {
+  background: #e6e6e6;
+  color: #35352c;
+}
+
+body.theme-2 .calc .calc-header .toggle {
+  background: #d1cccc;
+}
+
+body.theme-2 .calc .calc-header .toggle .red-circle {
+  background: #ca5502;
+}
+
+body.theme-2 .calc .calc-screen {
+  background: #ededed;
+}
+
+body.theme-2 .calc .calc-screen::-webkit-scrollbar-thumb {
+  background: #d1cccc;
+}
+
+body.theme-2 .calc .calc-buttons {
+  background: #d1cccc;
+}
+
+body.theme-2 .calc .calc-buttons button {
+  background: #e5e4e1;
+  -webkit-box-shadow: inset 0 -5px #a69d91;
+          box-shadow: inset 0 -5px #a69d91;
+  color: #35352c;
+}
+
+body.theme-2 .calc .calc-buttons button.number:active,
+body.theme-2 .calc .calc-buttons button.token:active,
+body.theme-2 .calc .calc-buttons button.comma:active {
+  background: #a69d91;
+}
+
+body.theme-2 .calc .calc-buttons button.delete:active,
+body.theme-2 .calc .calc-buttons button.reset:active {
+  background: #1b5f65;
+}
+
+body.theme-2 .calc .calc-buttons button.equal:active {
+  background: #893901;
+}
+
+body.theme-2 .calc .calc-buttons .delete {
+  background: #377f86;
+  color: #fff;
+  -webkit-box-shadow: inset 0 -5px #1b5f65;
+          box-shadow: inset 0 -5px #1b5f65;
+}
+
+body.theme-2 .calc .calc-buttons .reset {
+  background: #377f86;
+  color: #fff;
+  -webkit-box-shadow: inset 0 -5px #1b5f65;
+          box-shadow: inset 0 -5px #1b5f65;
+}
+
+body.theme-2 .calc .calc-buttons .equal {
+  background: #ca5502;
+  color: #fff;
+  -webkit-box-shadow: inset 0 -5px #893901;
+          box-shadow: inset 0 -5px #893901;
+}
+
+body.theme-2 .calc .modalIn,
+body.theme-2 .calc .modalOut {
+  background: #377f86;
+  -webkit-box-shadow: inset 0 -5px #1b5f65, 0 0px 30px 10px #893901;
+          box-shadow: inset 0 -5px #1b5f65, 0 0px 30px 10px #893901;
+}
+
+body.theme-2 .calc .modalIn p,
+body.theme-2 .calc .modalOut p {
+  color: #fff;
+}
+
+/* Theme 3 */
+body.theme-3 {
+  background: #160628;
+  color: #ffe53d;
+}
+
+body.theme-3 .calc .calc-header .toggle {
+  background: #1d0934;
+}
+
+body.theme-3 .calc .calc-header .toggle .red-circle {
+  background: #00e0d1;
+}
+
+body.theme-3 .calc .calc-screen {
+  background: #1d0934;
+}
+
+body.theme-3 .calc .calc-screen::-webkit-scrollbar-thumb {
+  background: #1b2428;
+}
+
+body.theme-3 .calc .calc-buttons {
+  background: #1d0934;
+}
+
+body.theme-3 .calc .calc-buttons button {
+  background: #341c4f;
+  -webkit-box-shadow: inset 0 -5px #871c9c;
+          box-shadow: inset 0 -5px #871c9c;
+  color: #ffe53d;
+}
+
+body.theme-3 .calc .calc-buttons button.number:active,
+body.theme-3 .calc .calc-buttons button.token:active,
+body.theme-3 .calc .calc-buttons button.comma:active {
+  background: #871c9c;
+}
+
+body.theme-3 .calc .calc-buttons button.delete:active,
+body.theme-3 .calc .calc-buttons button.reset:active {
+  background: #bc15f4;
+}
+
+body.theme-3 .calc .calc-buttons button.equal:active {
+  background: #6cf9f2;
+}
+
+body.theme-3 .calc .calc-buttons .delete {
+  background: #58077d;
+  color: white;
+  -webkit-box-shadow: inset 0 -5px #bc15f4;
+          box-shadow: inset 0 -5px #bc15f4;
+}
+
+body.theme-3 .calc .calc-buttons .reset {
+  background: #58077d;
+  color: white;
+  -webkit-box-shadow: inset 0 -5px #bc15f4;
+          box-shadow: inset 0 -5px #bc15f4;
+}
+
+body.theme-3 .calc .calc-buttons .equal {
+  background: #00e0d1;
+  color: #1b2428;
+  -webkit-box-shadow: inset 0 -5px #6cf9f2;
+          box-shadow: inset 0 -5px #6cf9f2;
+}
+
+body.theme-3 .calc .modalIn,
+body.theme-3 .calc .modalOut {
+  background: #58077d;
+  -webkit-box-shadow: inset 0 -5px #bc15f4, 0 0px 30px 10px #00e0d1;
+          box-shadow: inset 0 -5px #bc15f4, 0 0px 30px 10px #00e0d1;
+}
+
+body.theme-3 .calc .modalIn p,
+body.theme-3 .calc .modalOut p {
+  color: #ffe53d;
 }
 /*# sourceMappingURL=main.css.map */
