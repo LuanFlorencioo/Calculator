@@ -4,7 +4,6 @@ html {
   font-size: 20px;
   font-weight: 700;
   font-family: "Spartan", sans-serif;
-  color: #fff;
 }
 
 * {
@@ -30,6 +29,7 @@ body {
   width: 100vw;
   height: 100vh;
   background: #3a4764;
+  color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -15,16 +15,15 @@ $tm1-key-red-shadow: #93261a;
 $tm1-text-color: #444b5a;
 $tm1-text-color-white: #fff;
 
-html {
-    font-size: 20px;
-    font-weight: 700;
-    font-family: "Spartan", sans-serif;
-    color: $tm1-text-color-white;
-}
-
 * {
     margin: 0;
     padding: 0;
+    font-family: "Spartan", sans-serif;
+}
+
+html {
+    font-size: 20px;
+    font-weight: 700;
     font-family: "Spartan", sans-serif;
 }
 
@@ -32,12 +31,12 @@ h1 {
     font-size: 1rem;
 }
 
-p {
-    font-size: 0.5rem;
-}
-
 h2 {
     font-size: 2rem;
+}
+
+p {
+    font-size: 0.5rem;
 }
 
 body {
@@ -45,6 +44,7 @@ body {
     width: 100vw;
     height: 100vh;
     background: $tm1-main-bg;
+    color: $tm1-text-color-white;
     display: flex;
     justify-content: center;
     .calc {

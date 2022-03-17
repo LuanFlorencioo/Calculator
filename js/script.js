@@ -49,7 +49,7 @@ const calc = {
             const modalElement = document.createElement('div');
             modalElement.classList.add('modal');
             const imageElement = document.createElement('img');
-            imageElement.setAttribute('src', './../images/circle-exclamation-solid.svg')
+            imageElement.setAttribute('src', './../images/icon-circle.png')
             modalElement.appendChild(imageElement)
             const phraseElement = document.createElement('p');
             phraseElement.innerText = errorAlert;
@@ -129,10 +129,11 @@ getAllKeys.forEach(keyButton => {
     };
 });
 
-document.querySelector('.theme-toggle').addEventListener('click', () => {
-    const themes = document.body.classList;
-    if (themes[1] == '3')
-        themes.replace(themes[1], `1`)
-    else
-        themes.replace(themes[1], `${(+themes[1]) + 1}`)
-})
+const themeToggle = {
+    getCurrentTheme() {
+        const currentTheme = document.body.className.split('-')[1];
+        return console.log(currentTheme)
+    }
+}
+
+document.querySelector('.toggle').addEventListener('click', () => themeToggle.getCurrentTheme())
