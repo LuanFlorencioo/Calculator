@@ -49,7 +49,7 @@ const calc = {
             const modalElement = document.createElement('div');
             modalElement.classList.add('modal');
             const imageElement = document.createElement('img');
-            imageElement.setAttribute('src', '../images/circle-exclamation-solid.svg')
+            imageElement.setAttribute('src', './../images/circle-exclamation-solid.svg')
             modalElement.appendChild(imageElement)
             const phraseElement = document.createElement('p');
             phraseElement.innerText = errorAlert;

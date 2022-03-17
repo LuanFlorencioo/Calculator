@@ -266,9 +266,9 @@ body .calc .modal {
   width: 300px;
   height: 100px;
   border-radius: 10px;
-  background-color: #eae3dc;
-  -webkit-box-shadow: inset 0 -5px #b4a597, 0 0px 30px 20px #182034;
-          box-shadow: inset 0 -5px #b4a597, 0 0px 30px 20px #182034;
+  background: #eae3dc;
+  -webkit-box-shadow: inset 0 -5px #b4a597, 0 0px 30px 10px #182034;
+          box-shadow: inset 0 -5px #b4a597, 0 0px 30px 10px #182034;
   position: fixed;
   -webkit-animation: modalIn 0.3s forwards;
           animation: modalIn 0.3s forwards;
@@ -293,10 +293,9 @@ body .calc .modal img {
 
 body .calc .modal p {
   width: 80%;
-  height: 90%;
   text-align: justify;
   text-indent: 15px;
-  color: #182034;
+  color: #444b5a;
   font-size: 14px;
 }
 
