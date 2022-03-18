@@ -12,19 +12,8 @@ html {
     font-family: "Spartan", sans-serif;
 }
 
-h1 {
-    font-size: 1rem;
-}
-
-h2 {
-    font-size: 2rem;
-}
-
-p {
-    font-size: 0.5rem;
-}
-
 body {
+    transition: 0.5s;
     margin: 0;
     width: 100vw;
     height: 100vh;
@@ -44,6 +33,14 @@ body {
             justify-content: space-between;
             align-items: flex-end;
 
+            h1 {
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 0.5rem;
+            }
+
             .theme {
                 display: flex;
                 flex-direction: row;
@@ -54,11 +51,13 @@ body {
                     margin-left: 20px;
                     display: flex;
                     flex-direction: column;
+                    align-items: center;
 
                     .theme-id {
-                        width: 100%;
+                        width: 70%;
                         display: flex;
-                        justify-content: space-evenly;
+                        justify-content: space-between;
+                        cursor: default;
                     }
 
                     .toggle {
@@ -67,13 +66,16 @@ body {
                         border-radius: 20px;
                         display: flex;
                         flex-direction: row;
-                        justify-content: flex-start;
                         align-items: center;
+                        cursor: pointer;
+                        position: relative;
+
                         .red-circle {
                             width: 15px;
                             height: 15px;
                             border-radius: 10px;
                             margin: 0 2.5px;
+                            position: absolute;
                         }
                     }
                 }
@@ -94,6 +96,7 @@ body {
             .screen-result {
                 width: 90%;
                 height: 50px;
+                font-size: 2rem;
                 text-align: end;
             }
         }
@@ -244,6 +247,15 @@ body.theme-1 {
                 background: $tm1-screen-bg;
                 .red-circle {
                     background: $tm1-key-red-bg;
+                    animation: to1key 0.3s forwards;
+                }
+                @keyframes to1key {
+                    from {
+                        left: calc(100% - 20px);
+                    }
+                    to {
+                        left: 0;
+                    }
                 }
             }
         }
@@ -275,11 +287,7 @@ body.theme-1 {
             button.equal:active {
                 background: $tm1-key-red-shadow;
             }
-            .delete {
-                background: $tm1-key-gray-bg;
-                color: $tm1-text-color-white;
-                box-shadow: inset 0 -5px $tm1-key-gray-shadow;
-            }
+            .delete,
             .reset {
                 background: $tm1-key-gray-bg;
                 color: $tm1-text-color-white;
@@ -327,6 +335,15 @@ body.theme-2 {
                 background: $tm2-toggle-bg;
                 .red-circle {
                     background: $tm2-key-orange-bg;
+                    animation: to2key 0.3s forwards;
+                }
+                @keyframes to2key {
+                    from {
+                        left: 0;
+                    }
+                    to {
+                        left: calc(50% - 12.5px);
+                    }
                 }
             }
         }
@@ -358,11 +375,7 @@ body.theme-2 {
             button.equal:active {
                 background: $tm2-key-orange-shadow;
             }
-            .delete {
-                background: $tm2-key-cyan-bg;
-                color: $tm2-text-color-white;
-                box-shadow: inset 0 -5px $tm2-key-cyan-shadow;
-            }
+            .delete,
             .reset {
                 background: $tm2-key-cyan-bg;
                 color: $tm2-text-color-white;
@@ -377,10 +390,10 @@ body.theme-2 {
 
         .modalIn,
         .modalOut {
-            background: $tm2-key-cyan-bg;
-            box-shadow: inset 0 -5px $tm2-key-cyan-shadow, 0 0px 30px 10px $tm2-key-orange-shadow;
+            background: $tm2-key-yellow-bg;
+            box-shadow: inset 0 -5px $tm2-key-yellow-shadow, 0 0px 30px 10px $tm2-text-color;
             p {
-                color: $tm2-text-color-white;
+                color: $tm2-text-color;
             }
         }
     }
@@ -411,6 +424,15 @@ body.theme-3 {
                 background: $tm3-toggle-bg;
                 .red-circle {
                     background: $tm3-key-cyan-bg;
+                    animation: to3key 0.3s forwards;
+                }
+                @keyframes to3key {
+                    from {
+                        left: calc(50% - 12.5px);
+                    }
+                    to {
+                        left: calc(100% - 25px);
+                    }
                 }
             }
         }
@@ -442,11 +464,7 @@ body.theme-3 {
             button.equal:active {
                 background: $tm3-key-cyan-shadow;
             }
-            .delete {
-                background: $tm3-key-violet-bg;
-                color: $tm3-text-color-white;
-                box-shadow: inset 0 -5px $tm3-key-violet-shadow;
-            }
+            .delete,
             .reset {
                 background: $tm3-key-violet-bg;
                 color: $tm3-text-color-white;

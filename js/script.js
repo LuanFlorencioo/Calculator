@@ -2,10 +2,8 @@ const calc = {
     equation: '',
     addValue(value) {
         this.equation += value;
-
         this.changeResultScreen();
         document.querySelector('.calc-screen').scroll(300, 0)
-        return console.log(this.equation)
     },
     changeResultScreen() {
         const screen = document.querySelector('.screen-result');
@@ -35,14 +33,13 @@ const calc = {
         return lastValue;
     },
     removeLastValue() {
-        this.equation = this.equation.slice(0, -1)
+        this.equation = this.equation.slice(0, -1);
         this.changeResultScreen();
-        return console.log(this.equation)
     },
     resetEquation() {
+        /* atribuir equation.setValue(new value) */
         this.equation = '';
         this.changeResultScreen();
-        return console.log(this.equation)
     },
     errorMessage(errorAlert) {
         const modal = document.querySelector('.modalIn');
@@ -61,17 +58,17 @@ const calc = {
     },
     calculateEquation() {
         try {
-            if (this.equation == '0/0')
-                calc.errorMessage('Zero dividido por zero??? HaHaHa você só pode está brincando comigo.')
             const resultEquation = eval(this.equation);
+            if (this.equation == '0/0')
+                calc.errorMessage('Zero dividido por zero??? HaHaHa você só pode está brincando comigo.');
+
             if (isNaN(resultEquation) || !isFinite(resultEquation))
-                this.equation = '0'
+                this.equation = '0';
             else
-                this.equation = `${resultEquation}`
+                this.equation = `${resultEquation}`;
 
             this.changeResultScreen();
             document.querySelector('.calc-screen').scroll(0, 0)
-            return console.log(this.equation)
         }
         catch {
             calc.errorMessage('Ops! Parece que a sua operação está incorreta. Verifique novamente. Talvez seja um operador ou algum número fora de lugar.')
@@ -80,6 +77,8 @@ const calc = {
     }
 }
 
+
+window.addEventListener('keyup', (e) => insertValueClick(e));
 const insertValueClick = (e) => {
     if (e.type == 'keyup') {
         const key = e.key;
@@ -95,8 +94,6 @@ const insertValueClick = (e) => {
         calc.valueVerification(key)
     }
 }
-
-window.addEventListener('keyup', (e) => insertValueClick(e));
 
 const getAllKeys = Array.from(document.querySelectorAll('button'));
 getAllKeys.forEach(keyButton => {
@@ -122,19 +119,22 @@ getAllKeys.forEach(keyButton => {
     };
 });
 
+const toggleButton = document.querySelector('.toggle');
+toggleButton.addEventListener('click', () => themeToggle.changeNextTheme());
 const themeToggle = {
-    getKeyCurrentTheme() {
-        const currentTheme = document.body.className.split('-')[1];
-        return currentTheme
-    },
     changeNextTheme() {
-        const nextTheme = +(this.getKeyCurrentTheme()) + 1;
-        if (nextTheme == '4') {
-            document.body.classList.replace(`theme-${this.getKeyCurrentTheme()}`, `theme-1`)
+        document.body.classList.replace(`${this.getCurrentTheme()}`, `${this.getNextTheme()}`)
+    },
+    getCurrentTheme() {
+        const currentTheme = document.body.className.split('-')[1];
+        return `theme-${currentTheme}`
+    },
+    getNextTheme() {
+        const nextTheme = this.getCurrentTheme().split('-')[1];
+        if (+(nextTheme) + 1 == 4) {
+            return `theme-1`
         } else {
-            document.body.classList.replace(`theme-${this.getKeyCurrentTheme()}`, `theme-${nextTheme}`)
+            return `theme-${+(nextTheme) + 1}`
         }
     }
 }
-
-document.querySelector('.toggle').addEventListener('click', () => themeToggle.changeNextTheme())
