@@ -117,23 +117,24 @@ getAllKeys.forEach(keyButton => {
     };
 });
 
-const toggleButton = document.querySelector('.toggle');
-toggleButton.addEventListener('click', () => themeToggle.changeNextTheme());
 
-const themeToggle = {
-    changeNextTheme() {
-        document.body.classList.replace(`${this.getCurrentTheme()}`, `${this.getNextTheme()}`)
-    },
-    getCurrentTheme() {
-        const currentTheme = document.body.className.split('-')[1];
-        return `theme-${currentTheme}`
-    },
-    getNextTheme() {
-        const nextTheme = this.getCurrentTheme().split('-')[1];
-        if (+(nextTheme) + 1 == 4) {
-            return `theme-1`
-        } else {
-            return `theme-${+(nextTheme) + 1}`
-        }
+
+const body = document.body
+const currentTheme = window.getComputedStyle(body).backgroundColor;
+
+if (currentTheme == 'rgb(58, 71, 100)')
+    body.setAttribute('data-theme', '1');
+else
+    body.setAttribute('data-theme', '3');
+
+const changeNextTheme = () => {
+    const idCurrentTheme = body.dataset.theme;
+    if (idCurrentTheme == '3') {
+        body.dataset.theme = '1';
+    } else {
+        body.dataset.theme = +(body.dataset.theme) + 1;
     }
 }
+
+const toggle = document.querySelector('.toggle');
+toggle.addEventListener('click', changeNextTheme)
