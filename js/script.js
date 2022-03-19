@@ -1,45 +1,43 @@
 const calc = {
     equation: '',
     addValue(value) {
-        this.equation += value;
-        this.changeResultScreen();
+        calc.equation += value;
+        calc.changeResultScreen();
         document.querySelector('.calc-screen').scroll(300, 0)
     },
     changeResultScreen() {
         const screen = document.querySelector('.screen-result');
-        screen.innerText = this.equation;
+        screen.innerText = calc.equation;
     },
-    valueVerification(value) {
-        const key = value;
+    valueVerification(newValue) {
         const lastValue = calc.getLastValue();
 
         if (lastValue) {
-            if (isNaN(+lastValue) && isNaN(+key))
+            if (isNaN(+lastValue) && isNaN(+newValue))
                 calc.errorMessage("Ops! Não pode haver dois operadores juntos. Verifique os valores novamente.");
 
             else
-                calc.addValue(key);
+                calc.addValue(newValue);
         }
         else {
-            if (key == '-' || !isNaN(+key))
-                calc.addValue(key);
+            if (newValue == '-' || !isNaN(+newValue))
+                calc.addValue(newValue);
 
             else
                 calc.errorMessage('Para começar, você deve iniciar inserindo um número ou o valor de menos(-).');
         }
     },
     getLastValue() {
-        const lastValue = this.equation.at(-1);
+        const lastValue = calc.equation.at(-1);
         return lastValue;
     },
     removeLastValue() {
-        this.equation = this.equation.slice(0, -1);
-        this.changeResultScreen();
+        calc.equation = calc.equation.slice(0, -1);
+        calc.changeResultScreen();
     },
     resetEquation() {
-        /* atribuir equation.setValue(new value) */
-        this.equation = '';
-        this.changeResultScreen();
+        calc.equation = '';
+        calc.changeResultScreen();
     },
     errorMessage(errorAlert) {
         const modal = document.querySelector('.modalIn');
@@ -58,27 +56,27 @@ const calc = {
     },
     calculateEquation() {
         try {
-            const resultEquation = eval(this.equation);
-            if (this.equation == '0/0')
+            const resultEquation = eval(calc.equation);
+            if (calc.equation == '0/0')
                 calc.errorMessage('Zero dividido por zero??? HaHaHa você só pode está brincando comigo.');
 
             if (isNaN(resultEquation) || !isFinite(resultEquation))
-                this.equation = '0';
+                calc.equation = '0';
             else
-                this.equation = `${resultEquation}`;
+                calc.equation = `${resultEquation}`;
 
-            this.changeResultScreen();
+            calc.changeResultScreen();
             document.querySelector('.calc-screen').scroll(0, 0)
         }
         catch {
-            calc.errorMessage('Ops! Parece que a sua operação está incorreta. Verifique novamente. Talvez seja um operador ou algum número fora de lugar.')
+            calc.errorMessage('Ops! Sua operação está incorreta. Verifique novamente. Talvez seja um operador ou algum número fora de lugar.')
             console.warn(errorAlert);
         }
     }
 }
 
-
 window.addEventListener('keyup', (e) => insertValueClick(e));
+
 const insertValueClick = (e) => {
     if (e.type == 'keyup') {
         const key = e.key;
@@ -121,6 +119,7 @@ getAllKeys.forEach(keyButton => {
 
 const toggleButton = document.querySelector('.toggle');
 toggleButton.addEventListener('click', () => themeToggle.changeNextTheme());
+
 const themeToggle = {
     changeNextTheme() {
         document.body.classList.replace(`${this.getCurrentTheme()}`, `${this.getNextTheme()}`)

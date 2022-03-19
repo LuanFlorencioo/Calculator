@@ -13,12 +13,13 @@ html {
 }
 
 body {
-    transition: 0.5s;
-    margin: 0;
     width: 100vw;
     height: 100vh;
+    margin: 0;
+    transition: 0.5s;
     display: flex;
     justify-content: center;
+
     .calc {
         width: 500px;
         height: 100%;
@@ -29,12 +30,13 @@ body {
         .calc-header {
             width: 100%;
             display: flex;
+            margin-bottom: 25px;
             flex-direction: row;
             justify-content: space-between;
             align-items: flex-end;
 
             h1 {
-                font-size: 1rem;
+                font-size: 1.25rem;
             }
 
             p {
@@ -80,22 +82,20 @@ body {
                     }
                 }
             }
-            margin-bottom: 25px;
         }
 
         .calc-screen {
             width: 100%;
             height: 100px;
+            margin-bottom: 25px;
             border-radius: 10px;
+            overflow-x: auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 25px;
-            overflow-x: auto;
 
             .screen-result {
                 width: 90%;
-                height: 50px;
                 font-size: 2rem;
                 text-align: end;
             }
@@ -139,19 +139,17 @@ body {
             }
 
             .delete {
-                grid-row: 1/2;
-                grid-column: 4/5;
-                font-size: 0.65rem;
+                font-size: 0.8rem;
             }
 
             .reset {
                 grid-column: 1/3;
-                font-size: 0.65rem;
+                font-size: 0.8rem;
             }
 
             .equal {
                 grid-column: 3/5;
-                font-size: 0.65rem;
+                font-size: 1rem;
             }
         }
 
@@ -223,6 +221,81 @@ body {
     }
 }
 
+@media (max-width: 530px) {
+    body {
+        .calc {
+            width: 90%;
+            justify-content: space-evenly;
+            .calc-header {
+                margin-bottom: 0;
+                h1 {
+                    font-size: 1.75rem;
+                }
+                p {
+                    font-size: 0.6rem;
+                }
+                .theme {
+                    .theme-toggle {
+                        width: 70px;
+                        .theme-id {
+                            width: 70%;
+                            margin-bottom: 5px;
+                            justify-content: space-between;
+                        }
+                        .toggle {
+                            width: 100%;
+                            height: 30px;
+                            .red-circle {
+                                width: 18px;
+                                height: 18px;
+                                margin: 0 5px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .calc-screen {
+                margin-bottom: 0;
+                .screen-result {
+                    width: 85%;
+                    height: auto;
+                    font-size: 1.5rem;
+                }
+            }
+
+            .calc-buttons {
+                height: 450px;
+
+                .container-buttons {
+                    height: 90%;
+                    gap: 12.5px;
+                }
+
+                button {
+                    font-size: 1.5rem;
+                    border-radius: 5px;
+                }
+
+                .delete,
+                .reset,
+                .equal {
+                    font-size: 0.9rem;
+                }
+            }
+
+            .modalIn,
+            .modalOut {
+                p {
+                    width: 90%;
+                    text-indent: 20px;
+                    font-size: 0.75rem;
+                }
+            }
+        }
+    }
+}
+
 /* Theme 1 */
 $tm1-main-bg: #3a4764;
 $tm1-toggle-bg: #232c43;
@@ -244,7 +317,7 @@ body.theme-1 {
     .calc {
         .calc-header {
             .toggle {
-                background: $tm1-screen-bg;
+                background: $tm1-toggle-bg;
                 .red-circle {
                     background: $tm1-key-red-bg;
                     animation: to1key 0.3s forwards;
@@ -269,11 +342,11 @@ body.theme-1 {
         }
 
         .calc-buttons {
-            background: $tm1-screen-bg;
+            background: $tm1-toggle-bg;
             button {
                 background: $tm1-key-white-bg;
                 box-shadow: inset 0 -5px $tm1-key-white-shadow;
-                color: $tm1-screen-bg;
+                color: $tm1-main-bg;
             }
             button.number:active,
             button.token:active,
@@ -342,7 +415,7 @@ body.theme-2 {
                         left: 0;
                     }
                     to {
-                        left: calc(50% - 12.5px);
+                        left: calc(50% - 12px);
                     }
                 }
             }
@@ -479,10 +552,10 @@ body.theme-3 {
 
         .modalIn,
         .modalOut {
-            background: $tm3-key-violet-bg;
-            box-shadow: inset 0 -5px $tm3-key-violet-shadow, 0 0px 30px 10px $tm3-key-cyan-bg;
+            background: $tm3-key-cyan-bg;
+            box-shadow: inset 0 -5px $tm3-key-cyan-shadow, 0 0px 30px 10px $tm3-key-violet-bg;
             p {
-                color: $tm3-text-color;
+                color: $tm3-text-color-purple;
             }
         }
     }
