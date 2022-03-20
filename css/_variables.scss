@@ -1,0 +1,61 @@
+/* Theme 1 */
+$tm1-main-bg: #3a4764;
+$tm1-toggle-bg: #232c43;
+$tm1-screen-bg: #182034;
+
+$tm1-key-white-bg: #eae3dc;
+$tm1-key-white-shadow: #b4a597;
+$tm1-key-gray-bg: #637097;
+$tm1-key-gray-shadow: #404e72;
+$tm1-key-red-bg: #d03f2f;
+$tm1-key-red-shadow: #93261a;
+
+$tm1-text-color: #444b5a;
+$tm1-text-color-white: #fff;
+
+/* Theme 2 */
+$tm2-main-bg: #e6e6e6;
+$tm2-toggle-bg: #d1cccc;
+$tm2-screen-bg: #ededed;
+
+$tm2-key-cyan-bg: #377f86;
+$tm2-key-cyan-shadow: #1b5f65;
+$tm2-key-orange-bg: #ca5502;
+$tm2-key-orange-shadow: #893901;
+$tm2-key-yellow-bg: #e5e4e1;
+$tm2-key-yellow-shadow: #a69d91;
+
+$tm2-text-color: #35352c;
+$tm2-text-color-white: #fff;
+
+/* Theme 3 */
+$tm3-main-bg: #160628;
+$tm3-toggle-bg: #1d0934;
+$tm3-screen-bg: #1d0934;
+
+$tm3-key-violet-bg: #58077d;
+$tm3-key-violet-shadow: #bc15f4;
+$tm3-key-cyan-bg: #00e0d1;
+$tm3-key-cyan-shadow: #6cf9f2;
+$tm3-key-purple-bg: #341c4f;
+$tm3-key-purple-shadow: #871c9c;
+
+$tm3-text-color: #ffe53d;
+$tm3-text-color-purple: #1b2428;
+$tm3-text-color-white: #ffffff;
+
+@mixin sizeDimension($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin sizeJustWidth($width) {
+    width: $width;
+}
+
+@mixin alignment($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}

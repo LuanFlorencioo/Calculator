@@ -75,21 +75,41 @@ const calc = {
     }
 }
 
+const body = document.body;
+const currentTheme = window.getComputedStyle(body).backgroundColor;
+if (currentTheme == 'rgb(58, 71, 100)')
+    body.setAttribute('data-theme', '1');
+else
+    body.setAttribute('data-theme', '3');
+
+const changeNextTheme = () => {
+    const idCurrentTheme = body.dataset.theme;
+    if (idCurrentTheme == '3')
+        body.dataset.theme = '1';
+    else
+        body.dataset.theme = +(body.dataset.theme) + 1;
+}
+
+const toggle = document.querySelector('.toggle');
+toggle.addEventListener('click', changeNextTheme);
+
 window.addEventListener('keyup', (e) => insertValueClick(e));
 
 const insertValueClick = (e) => {
     if (e.type == 'keyup') {
         const key = e.key;
         if (!isNaN(+key) || key == '/' || key == '*' || key == '-' || key == '+' || key == '.')
-            calc.valueVerification(key)
+            calc.valueVerification(key);
+
         else if (key == 'Backspace')
             calc.removeLastValue();
+
         else if (key == 'Enter')
             calc.calculateEquation();
     }
     else {
         const key = e.target.classList[2];
-        calc.valueVerification(key)
+        calc.valueVerification(key);
     }
 }
 
@@ -116,25 +136,3 @@ getAllKeys.forEach(keyButton => {
             break;
     };
 });
-
-
-
-const body = document.body
-const currentTheme = window.getComputedStyle(body).backgroundColor;
-
-if (currentTheme == 'rgb(58, 71, 100)')
-    body.setAttribute('data-theme', '1');
-else
-    body.setAttribute('data-theme', '3');
-
-const changeNextTheme = () => {
-    const idCurrentTheme = body.dataset.theme;
-    if (idCurrentTheme == '3') {
-        body.dataset.theme = '1';
-    } else {
-        body.dataset.theme = +(body.dataset.theme) + 1;
-    }
-}
-
-const toggle = document.querySelector('.toggle');
-toggle.addEventListener('click', changeNextTheme)

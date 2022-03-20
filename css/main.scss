@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+@import "./variables";
 
 * {
     margin: 0;
@@ -11,52 +12,6 @@ html {
     font-weight: 700;
     font-family: "Spartan", sans-serif;
 }
-
-/* Theme 1 */
-$tm1-main-bg: #3a4764;
-$tm1-toggle-bg: #232c43;
-$tm1-screen-bg: #182034;
-
-$tm1-key-white-bg: #eae3dc;
-$tm1-key-white-shadow: #b4a597;
-$tm1-key-gray-bg: #637097;
-$tm1-key-gray-shadow: #404e72;
-$tm1-key-red-bg: #d03f2f;
-$tm1-key-red-shadow: #93261a;
-
-$tm1-text-color: #444b5a;
-$tm1-text-color-white: #fff;
-
-/* Theme 2 */
-$tm2-main-bg: #e6e6e6;
-$tm2-toggle-bg: #d1cccc;
-$tm2-screen-bg: #ededed;
-
-$tm2-key-cyan-bg: #377f86;
-$tm2-key-cyan-shadow: #1b5f65;
-$tm2-key-orange-bg: #ca5502;
-$tm2-key-orange-shadow: #893901;
-$tm2-key-yellow-bg: #e5e4e1;
-$tm2-key-yellow-shadow: #a69d91;
-
-$tm2-text-color: #35352c;
-$tm2-text-color-white: #fff;
-
-/* Theme 3 */
-$tm3-main-bg: #160628;
-$tm3-toggle-bg: #1d0934;
-$tm3-screen-bg: #1d0934;
-
-$tm3-key-violet-bg: #58077d;
-$tm3-key-violet-shadow: #bc15f4;
-$tm3-key-cyan-bg: #00e0d1;
-$tm3-key-cyan-shadow: #6cf9f2;
-$tm3-key-purple-bg: #341c4f;
-$tm3-key-purple-shadow: #871c9c;
-
-$tm3-text-color: #ffe53d;
-$tm3-text-color-purple: #1b2428;
-$tm3-text-color-white: #ffffff;
 
 @media (prefers-color-scheme: dark) {
     :root {
@@ -202,29 +157,21 @@ body[data-theme="3"] {
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+    @include sizeDimension(100vw, 100vh);
+    @include alignment(row, center, center);
     background: var(--main-background);
     color: var(--text-main);
     margin: 0;
     transition: 0.5s;
-    display: flex;
-    justify-content: center;
 
     .calc {
-        width: 500px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        @include sizeDimension(500px, 100%);
+        @include alignment(column, center, center);
 
         .calc-header {
-            width: 100%;
-            display: flex;
+            @include sizeJustWidth(100%);
+            @include alignment(row, space-between, flex-end);
             margin-bottom: 25px;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: flex-end;
 
             h1 {
                 font-size: 1.25rem;
@@ -235,38 +182,29 @@ body {
             }
 
             .theme {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-end;
+                @include alignment(row, initial, flex-end);
 
                 .theme-toggle {
-                    width: 60px;
+                    @include sizeJustWidth(60px);
+                    @include alignment(column, center, center);
                     margin-left: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
 
                     .theme-id {
-                        width: 70%;
-                        display: flex;
-                        justify-content: space-between;
+                        @include sizeJustWidth(70%);
+                        @include alignment(row, space-between, center);
                         cursor: default;
                     }
 
                     .toggle {
-                        width: 100%;
-                        height: 20px;
+                        @include sizeDimension(100%, 20px);
+                        @include alignment(row, center, center);
                         background: var(--toggle-background);
                         border-radius: 20px;
-                        display: flex;
-                        flex-direction: row;
-                        align-items: center;
                         cursor: pointer;
                         position: relative;
 
                         .red-circle {
-                            width: 15px;
-                            height: 15px;
+                            @include sizeDimension(15px, 15px);
                             background: var(--equal-key);
                             border-radius: 10px;
                             margin: 0 2.5px;
@@ -278,18 +216,15 @@ body {
         }
 
         .calc-screen {
-            width: 100%;
-            height: 100px;
+            @include sizeDimension(100%, 100px);
+            @include alignment(row, center, center);
             background: var(--screen-background);
             margin-bottom: 25px;
             border-radius: 10px;
             overflow-x: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
 
             .screen-result {
-                width: 90%;
+                @include sizeJustWidth(90%);
                 font-size: 2rem;
                 text-align: end;
             }
@@ -309,17 +244,13 @@ body {
         }
 
         .calc-buttons {
-            width: 100%;
-            height: 400px;
+            @include sizeDimension(100%, 400px);
+            @include alignment(row, center, center);
             background: var(--toggle-background);
             border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
 
             .container-buttons {
-                width: 87.5%;
-                height: 85%;
+                @include sizeDimension(87.5%, 85%);
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: repeat(5, 1fr);
@@ -380,8 +311,7 @@ body {
 
         .modalIn,
         .modalOut {
-            width: 300px;
-            height: 100px;
+            @include sizeDimension(300px, 100px);
             background: var(--modal-background);
             box-shadow: inset 0 -5px var(--modal-shadow), 0 0px 30px 10px var(--modal-out-shadow);
             border-radius: 10px;
@@ -390,14 +320,13 @@ body {
             justify-content: center;
             align-items: center;
             img {
-                width: 30px;
-                height: 30px;
+                @include sizeDimension(30px, 30px);
                 position: absolute;
                 left: -8px;
                 top: -8px;
             }
             p {
-                width: 80%;
+                @include sizeJustWidth(80%);
                 color: var(--modal-text);
                 text-align: justify;
                 text-indent: 15px;
@@ -452,30 +381,33 @@ body {
 @media (max-width: 530px) {
     body {
         .calc {
-            width: 90%;
-            justify-content: space-evenly;
+            @include sizeJustWidth(90%);
+            @include alignment(row, space-evenly, center);
+
             .calc-header {
                 margin-bottom: 0;
+
                 h1 {
                     font-size: 1.75rem;
                 }
+
                 p {
                     font-size: 0.6rem;
                 }
+
                 .theme {
                     .theme-toggle {
-                        width: 70px;
+                        @include sizeJustWidth(70px);
+
                         .theme-id {
-                            width: 70%;
+                            @include sizeJustWidth(70%);
                             margin-bottom: 5px;
-                            justify-content: space-between;
                         }
                         .toggle {
-                            width: 100%;
-                            height: 30px;
+                            @include sizeDimension(100%, 30px);
+
                             .red-circle {
-                                width: 18px;
-                                height: 18px;
+                                @include sizeDimension(18px, 18px);
                                 margin: 0 5px;
                             }
                         }
@@ -485,15 +417,15 @@ body {
 
             .calc-screen {
                 margin-bottom: 0;
+
                 .screen-result {
-                    width: 85%;
-                    height: auto;
+                    @include sizeDimension(85%, auto);
                     font-size: 1.5rem;
                 }
             }
 
             .calc-buttons {
-                height: 450px;
+                @include sizeJustWidth(450px);
 
                 .container-buttons {
                     height: 90%;
@@ -515,7 +447,7 @@ body {
             .modalIn,
             .modalOut {
                 p {
-                    width: 90%;
+                    @include sizeJustWidth(90%);
                     text-indent: 20px;
                     font-size: 0.75rem;
                 }
