@@ -382,7 +382,7 @@ body {
     body {
         .calc {
             @include sizeJustWidth(90%);
-            @include alignment(row, space-evenly, center);
+            @include alignment(column, space-evenly, center);
 
             .calc-header {
                 margin-bottom: 0;
@@ -425,7 +425,7 @@ body {
             }
 
             .calc-buttons {
-                @include sizeJustWidth(450px);
+                @include sizeDimension(100%, 450px);
 
                 .container-buttons {
                     height: 90%;

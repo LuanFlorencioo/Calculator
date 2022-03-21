@@ -595,10 +595,10 @@ body .calc .modalOut {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
@@ -640,7 +640,8 @@ body .calc .modalOut {
     font-size: 1.5rem;
   }
   body .calc .calc-buttons {
-    width: 450px;
+    width: 100%;
+    height: 450px;
   }
   body .calc .calc-buttons .container-buttons {
     height: 90%;
